@@ -51,6 +51,7 @@ $conn->close();
         <div class="buttons">
             <a href="addPatient.php"><button>Add Another Patient</button></a>
             <a href="getPatient.php"><button>View Patients</button></a>
+            <a href="getResults.php"><button>View Records</button></a>
         </div>
     </div>
     <script src="js/background.js"></script>

@@ -31,7 +31,10 @@
             <input type="text" id="address" name="address" required><br><br>
 
             <input type="submit" value="Submit">
-            </form>
+        </form>
+        <form action="getResults.php">
+            <input type="submit" value="View Records">
+        </form>
         <form action="getPatient.php">
             <input type="submit" value="View Patients">
         </form>

@@ -38,8 +38,11 @@
             ?>
         </table>
         <form action="addPatient.php">
-        <input type="submit" value="Add New Patient">
-    </form>
+            <input type="submit" value="Add New Patient">
+        </form>
+        <form action="getResults.php">
+            <input type="submit" value="View Records">
+        </form>
     </div>
 
     <script src="js/background.js"></script>
