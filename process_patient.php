@@ -1,3 +1,4 @@
+<?php include_once "header.php"; ?>
 <?php
 // Include database configuration
 include_once "config.php";
@@ -39,6 +40,7 @@ $conn->close();
 <html>
 <head>
     <title>Record Created</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>

@@ -1,3 +1,4 @@
+<?php include_once "header.php"; ?>
 <?php
 // Include the database configuration file
 require_once 'config.php';
@@ -40,6 +41,7 @@ function displayTableRecords($tableName) {
 <html>
 <head>
     <title>Database Records</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
