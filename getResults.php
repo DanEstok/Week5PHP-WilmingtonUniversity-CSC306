@@ -9,7 +9,8 @@ function displayTableRecords($tableName) {
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
-        echo "<h2>Table: $tableName</h2>";
+        echo "<div class='form-container'>";
+        echo "<h2 style='text-align: center;'>Table: $tableName</h2>";
         echo "<table>";
         echo "<tr>";
         // Print column names
@@ -27,16 +28,42 @@ function displayTableRecords($tableName) {
             echo "</tr>";
         }
         echo "</table>";
+        echo "</div>";
     } else {
-        echo "No records found in the $tableName table.";
+        echo "<div class='form-container'>";
+        echo "<p>No records found in the $tableName table.</p>";
+        echo "</div>";
     }
 }
-
-// Display records from each table
-displayTableRecords("Billing");
-displayTableRecords("Medication");
-displayTableRecords("Patient");
-
-// Close database connection
-$conn->close();
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Database Records</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="animation-container">
+        <canvas id="animation-canvas"></canvas>
+    </div>
+    <?php
+    // Display records from each table
+    displayTableRecords("Billing");
+    displayTableRecords("Medication");
+    displayTableRecords("Patient");
+    ?>
+    <div class="form-container">
+        <form action="addPatient.php">
+            <input type="submit" value="Add New Patient">
+        </form>
+        <form action="getPatient.php">
+            <input type="submit" value="View Patients">
+        </form>
+    </div>
+    <script src="js/background.js"></script>
+    <?php
+    // Close database connection
+    $conn->close();
+    ?>
+</body>
+</html>
