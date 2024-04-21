@@ -1,42 +1,4 @@
-<?php include_once "header.php"; ?>
-<?php
-// Include the database configuration file
-require_once 'config.php';
-
-// Function to display table records
-function displayTableRecords($tableName) {
-    global $conn;
-    $sql = "SELECT * FROM $tableName";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        echo "<div class='form-container'>";
-        echo "<h2 style='text-align: center;'>Table: $tableName</h2>";
-        echo "<table>";
-        echo "<tr>";
-        // Print column names
-        while ($fieldInfo = $result->fetch_field()) {
-            echo "<th>" . $fieldInfo->name . "</th>";
-        }
-        echo "</tr>";
-
-        // Print data rows
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr>";
-            foreach ($row as $value) {
-                echo "<td>" . $value . "</td>";
-            }
-            echo "</tr>";
-        }
-        echo "</table>";
-        echo "</div>";
-    } else {
-        echo "<div class='form-container'>";
-        echo "<p>No records found in the $tableName table.</p>";
-        echo "</div>";
-    }
-}
-?>
+<?php include_once "header.php";?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,11 +11,49 @@ function displayTableRecords($tableName) {
         <canvas id="animation-canvas"></canvas>
     </div>
     <?php
+    // Include the database configuration file
+    require_once 'config.php';
+
+    // Function to display table records
+    function displayTableRecords($tableName) {
+        global $conn;
+        $sql = "SELECT * FROM $tableName";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            echo "<div class='table-container'>";
+            echo "<h2 style='text-align: center;'>Table: $tableName</h2>";
+            echo "<table>";
+            echo "<tr>";
+            // Print column names
+            while ($fieldInfo = $result->fetch_field()) {
+                echo "<th>". $fieldInfo->name. "</th>";
+            }
+            echo "</tr>";
+
+            // Print data rows
+            while ($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                foreach ($row as $value) {
+                    echo "<td>". $value. "</td>";
+                }
+                echo "</tr>";
+            }
+            echo "</table>";
+            echo "</div>";
+        } else {
+            echo "<div class='table-container'>";
+            echo "<p>No records found in the $tableName table.</p>";
+            echo "</div>";
+        }
+    }
+   ?>
+    <?php
     // Display records from each table
     displayTableRecords("Billing");
     displayTableRecords("Medication");
     displayTableRecords("Patient");
-    ?>
+   ?>
     <div class="form-container">
         <form action="addPatient.php">
             <input type="submit" value="Add New Patient">
@@ -66,6 +66,6 @@ function displayTableRecords($tableName) {
     <?php
     // Close database connection
     $conn->close();
-    ?>
+   ?>
 </body>
 </html>
